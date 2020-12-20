@@ -10,14 +10,15 @@
 You can create your own .tfvars file to override default variables set in `variables.tf`. There's a file, `dev-us-east-1.tfvars` that's been created to illustrate how customizations can be made to the deployment. To use the .tfvars file you would specify the file name in the terraform cli `-var-file` option.
 
 ## View the Terraform plan
-* `cd terraform`
 * `terraform init`
 * `terraform plan -var-file dev-us-east-1.tfvars` (Note: You can create your own .tfvars file to specify here)
 
 ## Deploy the Infrastructure
-* `cd terraform`
-* `terraform apply -var-file dev-us-east-1.tfvars` (Note: You can create your own .tfvars file to specify here)
+* `terraform apply -var-file dev-us-east-1.tfvars` (Note: Specify your .tfvars file)
 * After receiving the prompt for applying the changes, review that the infrastructure changes look correct then enter `yes`
+
+## Destroy the Infrastructure
+* `terraform destroy -var-file dev-us-east-1.tfvars` (Note: Specify your .tfvars file)
 
 ## State Management
 Terraform creates state files to store bindings between objects in a remote system and resource instances declared in your configuration. By default, if no custom state configuration is created terraform will create a `terraform.tfstate` file to record state. In `main.tf` there's a commented block where you can specify an s3 location to store & manage your statefile *(recommended)*. Go to the [terraform doc on state](https://www.terraform.io/docs/state/index.html) to learn more.
